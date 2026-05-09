@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F5F5;
+  --foreground: #0b0c0b;
 }
 
 @theme inline {
@@ -14,8 +14,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #080708;
   }
 }
 
@@ -23,4 +23,33 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.logo {
+  background-color: #002C61;
+  color: white;
+  border-radius: 1px solid #002C61;
+  margin: 5px;
+  border: #002C61 solid 1px;
+  
+}
+
+.logo div:first-child {
+  font-weight: bold;
+    padding: 5px;
+}
+
+.logo div:last-child {
+  font-weight: normal;  
+  background-color: white;
+  color: #01224b;
+  padding: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.product-details {
+  opacity: 0.7;
 }
