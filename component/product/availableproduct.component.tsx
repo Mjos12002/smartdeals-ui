@@ -1,7 +1,12 @@
 'use client'
 
-export function AvailableProduct({productName, productPrice}: {productName: string; productPrice: number}) {
-
+export function AvailableProduct({
+    productName, 
+    productPrice
+}: {
+    productName: string; 
+    productPrice: number
+}) {
     return (
         <div className="text-black-500 w-[25%] flex flex-col p-1">
 

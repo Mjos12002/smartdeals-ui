@@ -1,0 +1,43 @@
+'use client'
+import { submitData, FormState } from "@/action/validation.action"
+import { useActionState } from "react"
+
+var initialState: FormState = {
+    errors: [],
+    message: ""
+}
+
+const SignUpComponent = () => { 
+
+    const [state, signup, isPending] = useActionState(submitData, undefined)
+
+    return (
+        <div className="flex flex-col gap-4">
+            <div className="ml-0 mt-6 font-medium text-3xl text-[#00052B]">Sign Up</div>
+            <form action={ signup }>
+                <ul className="flex gap-4 flex-col m-0">
+                    <li>
+                        <input type="text" placeholder="Email" name="email" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                    </li>
+                    <li>
+                        <input type="password" placeholder="Password" name="password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                    </li>
+                    <li>
+                        <input type="password" placeholder="Confirm Password" name="confirm_password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                    </li>
+                    <li>
+                        <button type="submit" disabled={isPending} className="bg-[#02C40B] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>
+                    </li>
+                    <li>
+                      
+                        {
+                            state?.code == 200 ? <span>{state?.message}</span> : <span></span>
+                        }
+                    </li>
+                </ul>
+            </form>
+        </div>
+    )
+}
+
+export default SignUpComponent

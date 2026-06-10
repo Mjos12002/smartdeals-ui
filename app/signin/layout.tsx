@@ -6,7 +6,7 @@ export default function SignInLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div>
+        <div className="h-screen overflow-y-scroll">
             {children}
         </div>
     );
