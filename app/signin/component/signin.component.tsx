@@ -1,13 +1,28 @@
 'use client'
 
 import { useActionState } from "react";
-import { submitData, FormState } from "@/action/signin.action";
+import { userSignIn, FormState } from "@/action/signin.action";
+import { useRouter } from "next/navigation";
+
+var initialState: FormState = {
+    message: "",
+    token: "",
+    username: "",
+    id: "",
+    role: "",
+    errors: []
+}
 
 
 // SignInComponent used in SignIn page, responsible for rendering the sign in form and handling its submission
 const SignInComponent = () => {
+    
+    const useRoute = useRouter()
+    const [state, signin, isPending] = useActionState(userSignIn, undefined)
 
-    const [state, signin, isPending] = useActionState(submitData, undefined)
+    if (state?.code == 200) {
+        useRoute.push("/dashboard")
+    }
 
     return (
         <div className="flex flex-col gap-4">
@@ -16,18 +31,22 @@ const SignInComponent = () => {
             <form action={signin}>
                 <ul className="flex gap-4 flex-col m-0">
                     <li>
-                        <input type="text" placeholder="Username" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                        <input type="text" placeholder="Username" name="username" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="password" placeholder="Password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                        <input type="password" placeholder="Password" name="password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <button type="submit" className="bg-blue-500 rounded-sm text-white p-2">Sign In</button>
+                        <button type="submit" disabled={isPending} className="bg-blue-500 rounded-sm text-white p-2">{isPending ? "Processing ...." : "Submit"}</button>
                     </li>
                     <li>
                         {
-                            state?.code == 200 ? <span>{state?.message}</span> : <span></span>
+                            state?.code == 200 ? <span>{state?.message} -- {state?.token}</span> : <span></span>
                         }
+                        {
+                            state?.token
+                        }
+
                     </li>
                 </ul>
             </form>

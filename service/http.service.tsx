@@ -13,7 +13,7 @@ const httpService = {
 		}
 	},
 
-	post: async function (url: string, {username, password}: {username: string, password: string}) {
+	signup: async function (url: string, {username, password}: {username: string, password: string}) {
 		try {
 			const response = await fetch(url, {
 				method: "POST",

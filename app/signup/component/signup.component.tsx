@@ -1,7 +1,8 @@
 'use client'
-import { submitData, FormState } from "@/action/validation.action"
+import { userSignUp, FormState } from "@/action/validation.action"
 import { useActionState } from "react"
 
+// form initial state
 var initialState: FormState = {
     errors: [],
     message: ""
@@ -9,7 +10,7 @@ var initialState: FormState = {
 
 const SignUpComponent = () => { 
 
-    const [state, signup, isPending] = useActionState(submitData, undefined)
+    const [state, signup, isPending] = useActionState(userSignUp, undefined)
 
     return (
         <div className="flex flex-col gap-4">

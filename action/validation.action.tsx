@@ -1,6 +1,5 @@
 'use server'
 import { httpService } from "@/service/http.service";
-import { use } from "react";
 
 export type FormState = {
     message: string;
@@ -12,7 +11,7 @@ export type Err = {
     name: string
 }
 
-export async function submitData(prevState: FormState, formData: FormData): Promise<any> {
+export async function userSignUp(prevState: FormState, formData: FormData): Promise<any> {
 
     const username = formData.get("email") as string
     const password = formData.get("password") as string
@@ -36,6 +35,6 @@ export async function submitData(prevState: FormState, formData: FormData): Prom
         errorsDetails.push({element: 'confirm_password', name: 'Missing confirm password field'})
     }
 
-    return httpService.post("http://localhost:8090/api/v1/signup", {username, password})
+    return httpService.signup("http://localhost:8090/api/v1/signup", {username, password})
     
 }

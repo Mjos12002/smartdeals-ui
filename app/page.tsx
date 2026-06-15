@@ -6,7 +6,7 @@ import ProductCategory from "@/component/welcome/productcategory.component"
 import { httpService } from "@/service/http.service"
 import { useEffect, useState } from "react"
 
-interface IProductData{
+interface IProductData {
     ID: number
     product_name: string
     price: number
@@ -14,7 +14,7 @@ interface IProductData{
 
 }
 
-interface IProduct{
+interface IProduct {
     code: number
     status: string
     message: string
@@ -24,17 +24,17 @@ interface IProduct{
 export default function Welcome() {
 
     var [product, setProduct] = useState<IProduct | null>(null)
-
+    
     useEffect(() => {
         httpService.get("http://localhost:8090/api/v1/product")
-        .then(data => setProduct(data))
-        .catch(err => console.log(err))
+            .then(data => setProduct(data))
+            .catch(err => console.log(err))
 
     }, [])
 
     return (
         <div className="h-screen overflow-y-scroll bg-gradient-to-r md:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
-            
+
             <Header />
 
             <div className="flex justify-center">
@@ -50,16 +50,16 @@ export default function Welcome() {
             </div>
 
             <div className="bg-white m-7 h-screen rounded-lg border border-[#C6C3C3] opacity-80 border border-shadow overflow-y-scroll">
-                
+
                 <div className="ml-5 mt-4 p-1 border rounded-sm border-[#15A602] font-light text-xl text-[#15A602] w-fit font-sans">Latest promotions</div>
-                
+
                 <ProductCategory />
 
                 <div className="flex justify-center">
                     <div className="flex flex-wrap  mt-15 w-[98%]">
 
                         {
-                            product?.data?.map((d) => (<AvailableProduct key={d.ID} productName={d.product_name} productPrice={d.price}/>))
+                            product?.data?.map((d) => (<AvailableProduct key={d.ID} productName={d.product_name} productPrice={d.price} />))
                         }
 
                     </div>

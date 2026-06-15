@@ -1,6 +1,4 @@
 // app/siginin/page.tsx
-import Image from "next/image"
-import ProductCategory from "@/component/welcome/productcategory.component";
 import Header from "@/component/welcome/header.component";
 import SignInComponent from "./component/signin.component";
 
@@ -10,7 +8,7 @@ export default function Signin() {
 
             <Header />
 
-            <div className="bg-white m-4 h-screen rounded-lg border-[#9193A3] border border-shadow overflow-y-scroll">
+            <div className="bg-white m-4 h-screen rounded-lg border-[#E8E8E8] border border-shadow overflow-y-scroll">
 
                 <div className="flex justify-stretch">
                     <div className="flex flex-row w-[100%]">
@@ -18,12 +16,17 @@ export default function Signin() {
                         <div className="basis-1/3 flex flex-col items-center justify-center">
                             <div className="w-[90%]">
                                 <SignInComponent />
+                                
                             </div>
-
                         </div>
-                        <div className="basis-2/3 bg-[#010014] opacity-40 bg-gradient-to-r md:from-[#FCFCFC] via-[#5C5B5B] to-[#020129] h-screen flex flex-col items-center justify-center">
-                            <h1 className="text-white text-6xl">You don't have an account?</h1>
-                            <h3 className="text-[#38E802]">Sign Up to start your business</h3>
+                        <div className="basis-2/3 h-screen flex flex-col items-center justify-center relative">
+
+                            <div className="w-[100%] h-screen bg-red-200 absolute top-0 left-0 bg-[#010014] opacity-90 bg-gradient-to-r md:from-[#F7F7F7] via-[#C2C0C0] to-[#000000]">
+                            </div>
+                            <div className="z-10 flex flex-col items-center justify-center bg-[#DB9302] p-2 border border-[#fff] rounded-sm opacity-80">
+                                <h1 className="text-[#fff] text-6xl whitespace-nowrap">Welcome to SmartDeals</h1>
+                                <h3 className="text-[#F7F7F7] whitespace-nowrap">a plaform to showcase your business</h3>
+                            </div>
                         </div>
 
                     </div>
