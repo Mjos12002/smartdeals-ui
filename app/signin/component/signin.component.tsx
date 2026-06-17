@@ -13,7 +13,6 @@ var initialState: FormState = {
     errors: []
 }
 
-
 // SignInComponent used in SignIn page, responsible for rendering the sign in form and handling its submission
 const SignInComponent = () => {
     
@@ -27,7 +26,7 @@ const SignInComponent = () => {
     return (
         <div className="flex flex-col gap-4">
 
-            <div className="ml-0 mt-6 font-medium text-3xl text-[#00052B]">Sign In</div>
+            <div className="ml-0 mt-6 font-medium text-3xl text-[#0FCF02]">Sign In</div>
             <form action={signin}>
                 <ul className="flex gap-4 flex-col m-0">
                     <li>
@@ -37,7 +36,7 @@ const SignInComponent = () => {
                         <input type="password" placeholder="Password" name="password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <button type="submit" disabled={isPending} className="bg-blue-500 rounded-sm text-white p-2">{isPending ? "Processing ...." : "Submit"}</button>
+                        <button type="submit" disabled={isPending} className="bg-[#00021C] rounded-sm text-white p-2">{isPending ? "Processing ...." : "Submit"}</button>
                     </li>
                     <li>
                         {

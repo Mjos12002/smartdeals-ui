@@ -14,7 +14,7 @@ const SignUpComponent = () => {
 
     return (
         <div className="flex flex-col gap-4">
-            <div className="ml-0 mt-6 font-medium text-3xl text-[#00052B]">Sign Up</div>
+            <div className="ml-0 mt-6 font-medium text-3xl text-[#0FCF02]">Sign Up</div>
             <form action={ signup }>
                 <ul className="flex gap-4 flex-col m-0">
                     <li>
@@ -27,7 +27,7 @@ const SignUpComponent = () => {
                         <input type="password" placeholder="Confirm Password" name="confirm_password" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <button type="submit" disabled={isPending} className="bg-[#02C40B] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>
+                        <button type="submit" disabled={isPending} className="bg-[#00021C] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>
                     </li>
                     <li>
                       
