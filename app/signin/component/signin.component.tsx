@@ -40,7 +40,7 @@ const SignInComponent = () => {
                     </li>
                     <li>
                         {
-                            state?.code == 200 ? <span>{state?.message} -- {state?.token}</span> : <span></span>
+                            state?.code == 200 ? <span>{state?.message}</span> : <span></span>
                         }
                         {
                             state?.token

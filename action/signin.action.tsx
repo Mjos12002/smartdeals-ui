@@ -32,10 +32,10 @@ export async function userSignIn(prevState: FormState, formData: FormData): Prom
         message = "Error"
         errorsDetails.push({ element: 'password', name: 'Missing password field' })
     }
+    
     const cookie = await cookies()
-    const resp = httpService.signin("http://localhost:8090/api/v1/signin", { username, password });
+    const resp = httpService.signin("http://localhost:8090/api/v1/signin", { username, password })
     resp.then(r => {
-        console.log(r)
         if(r.record_id > 0) {
             cookie.set("token", r.token)
             cookie.set("role", r.role)

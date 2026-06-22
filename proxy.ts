@@ -4,6 +4,8 @@ import { NextResponse, NextRequest } from "next/server";
 
 export function proxy(request: NextRequest) {
 
+    request.headers.set('Access-Control-Allow-Origin', '*')
+    request.headers.set('Access-Control-Allow-Headers', 'Content-Type, Authorization')
     if (request.nextUrl.pathname.startsWith('/dashboard')) {
         const token = request.cookies.get('token')
         if (token?.value.split(".").length == 0) {
