@@ -21,7 +21,7 @@ export async function getAddress(): Promise<any> {
     const cookie = await cookies()
     const tkn: string | undefined = cookie.get("token")?.value
     if (tkn != undefined) {
-        return httpService.getAddress("http://localhost:8090/api/v1/address", tkn)
+        return httpService.getAddress("http://localhost:8090/api/secure/v1/address", tkn)
     }
 }
 

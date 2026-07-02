@@ -1,31 +1,43 @@
 'use client'
 
-import { httpService } from "@/service/http.service"
+import { getProducts } from "@/action/product.action"
 import { useEffect, useState } from "react"
+import { AvailableProductComponent } from "./component/product/availableproduct.component"
 
 interface IProductData {
     ID: number
     product_name: string
     price: number
     product_description: string
+    discount: number
+    discountPrice: number
 
 }
 
 interface IProduct {
-    code: number
-    status: string
-    message: string
-    data: IProductData[]
+    ID: number
+    name: string
+    price: number
+    description: string
+    discount: number
+    discounted_price: number
+    discount_start_date: string
+    discount_end_date: string
+    logo: string
 }
 
 export default function Welcome() {
 
-    var [product, setProduct] = useState<IProduct | null>(null)
-    
+    var [product, setProduct] = useState<IProduct[]>()
+
     useEffect(() => {
-        httpService.get("http://localhost:8090/api/v1/product")
-            .then(data => setProduct(data))
+        getProducts()
+            .then(data => {
+                const res: IProduct[] = data.data
+                setProduct(res)
+            })
             .catch(err => console.log(err))
+
 
     }, [])
 
@@ -43,10 +55,12 @@ export default function Welcome() {
                 </div>
             </div>
 
-            <div className="bg-white m-7 h-screen rounded-lg border border-[#C6C3C3] opacity-80 border border-shadow overflow-y-scroll">
-
-                <div className="ml-5 mt-4 p-1 border rounded-sm border-[#15A602] font-light text-xl text-[#15A602] w-fit font-sans">Latest promotions</div>
-
+            <div className="bg-white m-7 h-screen rounded-lg border border-[#C6C3C3] opacity-100 border border-shadow overflow-y-scroll">
+                <div className="flex flex-wrap">
+                    {
+                        product != undefined && product.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />) 
+                    }
+                </div>
             </div>
 
         </div>

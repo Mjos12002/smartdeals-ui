@@ -1,24 +1,39 @@
 'use client'
+import Image from 'next/image';
+export function AvailableProductComponent({
+    name,
+    price,
+    discount,
+    discounted_price,
+    discount_start_date,
+    discount_end_date,
+    imageurl
 
-export function AvailableProduct({
-    productName, 
-    productPrice
 }: {
-    productName: string; 
-    productPrice: number
+    name: string;
+    price: number,
+    discount: number,
+    discounted_price: number,
+    discount_start_date: string
+    discount_end_date: string
+    imageurl: string
 }) {
     return (
-        <div className="text-black-500 w-[25%] flex flex-col p-1">
-
-            <div className="border border-gray-300 bg-[url('/cosmetics.jpg')] bg-cover h-90 product-card justify-end flex flex-col">
-                <div className="p-1 w-full product-details p-2 flex flex-col bg-white">
-                    <span className="font-bold">{productName}</span>
-                    <span>Price: <span>{productPrice} RWF</span> - <span className="text-red-500 line-through text-sm">1000 RWF</span></span>
-                    <span>10% Off</span>
-                    <span className="font-light text-sm text-[#595757]">Simba Supermarket (Gishushu)</span>
+        <div className="text-black-500 lg:w-[25%] md:w-[50%] sm:w-[100%] flex flex-col p-1">
+            <div className="w-full h-[400] border border-[#fff] relative shadow-sm">
+                <Image
+                    src={imageurl}
+                    alt={name}
+                    fill />
+                <div className="absolute bottom-0 left-0 w-full bg-[#fff] p-2">
+                    <ul>
+                        <li><span className="font-bold text-lg text-[#00001F]">{name}</span></li>
+                        <li><span className='text-[#545454]'>Price: <span>{price} RWF</span></span></li>
+                        <li><span>{discount}% Off</span> | <span className="text-red-500 line-through text-sm">{discounted_price}</span></li>
+                        <li><span className="font-light text-sm text-[#002E5E]">Simba Supermarket (Gishushu)</span></li>
+                    </ul>
                 </div>
-             </div>
-
+            </div>
         </div>
     )
 }

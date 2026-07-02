@@ -1,6 +1,9 @@
-// Actions for the profile form
+'use server'
 
+// Actions for the profile form
 import { httpService } from "@/service/http.service";
+import { getEnv } from "@/utils/env.utils";
+import { cookies } from "next/headers";
 
 // ValidationStructure Structure of form control validation
 export type ValidationStructure = {
@@ -16,18 +19,34 @@ export type FormState = {
     errors?: ValidationStructure[]
 }
 
+// getProfile function gets the list of profiles
+export async function getProfile(): Promise<any> {
+    const cookie = await cookies()
+    const token: string | undefined = cookie.get("token")?.value
+    if(token != undefined) {
+        const devURL = getEnv("dev").value
+        console.log(devURL)
+        return httpService.getProfile(`${devURL}secure/v1/profile`, token)
+    }
+}
+
 // createProfile function used to create profile
 export async function createProfile(prev: FormState, formData: FormData): Promise<any> {
-    
+
     const first_name = formData.get("first_name") as string
     const last_name = formData.get("last_name") as string
     let validationErrors: ValidationStructure[] = []
-    if(first_name == "" || first_name == null) {
-        validationErrors.push({control: "first_name", description: "Missing value for first_name"})
+    if (first_name == "" || first_name == null) {
+        validationErrors.push({ control: "first_name", description: "Missing value for first_name" })
     }
-    if(last_name == "" || last_name == null) {
-        validationErrors.push({control: "last_name", description: "Missing value for last name"})
+    if (last_name == "" || last_name == null) {
+        validationErrors.push({ control: "last_name", description: "Missing value for last name" })
     }
-    return httpService.createProfile("http://localhost:8090/api/v1/profile", {first_name, last_name})
-    
+
+    const cookie = await cookies()
+    const tkn: string | undefined = cookie.get("token")?.value
+    if (tkn != undefined) {
+        return httpService.createProfile("http://localhost:8090/api/secure/v1/profile", tkn, { first_name, last_name })
+    }
+
 }

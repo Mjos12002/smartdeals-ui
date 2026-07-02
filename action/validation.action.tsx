@@ -35,6 +35,6 @@ export async function userSignUp(prevState: FormState, formData: FormData): Prom
         errorsDetails.push({element: 'confirm_password', name: 'Missing confirm password field'})
     }
 
-    return httpService.signup("http://localhost:8090/api/v1/signup", {username, password})
+    return httpService.signup("http://localhost:8090/api/secure/v1/signup", {username, password})
     
 }

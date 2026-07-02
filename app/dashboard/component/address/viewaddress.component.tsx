@@ -20,12 +20,18 @@ interface IAddress {
 export default function ViewAddressComponent() {
 
     const [address, setAddress] = useState<IAddress[]>(() => [])
+    const [responseCode, setresponseCode] = useState<Number>(0)
 
     useEffect(() => {
         getAddress()
             .then((r) => {
-                const dt: IAddress[] = r.data
-                setAddress(prev => dt)
+                const response: IAddress[] = r.data
+                if (response == undefined || response == null){
+                    setresponseCode(r.code)
+                }
+                if (response != null && response != undefined) {
+                    setAddress(prev => response)
+                }
             })
             .catch((e) => e)
     }, [])
@@ -36,6 +42,7 @@ export default function ViewAddressComponent() {
                 Available Addresses
             </h2>
             <div className="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-md border border-[#CCCCCC]">
+                { responseCode == 401 ? <div className="p-2 text-2xl text-[#F5A905]">Unauthorized user, contact admin</div> : <span></span>}
                 <table className="w-full text-sm text-left rtl:text-right text-body">
                     <thead className="text-large text-body bg-[#060813] border-b border-[#060813] text-white">
                         <tr>
@@ -90,6 +97,7 @@ export default function ViewAddressComponent() {
                         }
                     </tbody>
                 </table>
+
             </div>
         </div>
     )
