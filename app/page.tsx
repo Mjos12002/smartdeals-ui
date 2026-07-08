@@ -45,8 +45,8 @@ export default function Welcome() {
         <div className="h-screen overflow-y-scroll bg-gradient-to-r md:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
             <div className="flex justify-center pt-2">
-                <div className="border border-[#C7C9C9] rounded-lg flex w-[50%] justify-between bg-[#fff]">
-                    <input placeholder="Search" className="p-1 m-2 w-[80%] bg-[#fff]" />
+                <div className="border border-[#C7C9C9] rounded-lg flex w-[90%] sm:w-[50%] md:w-[50%] justify-between bg-[#fff]">
+                    <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[80%] bg-[#fff]" />
                     <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]">
                         <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeWidth="3" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />

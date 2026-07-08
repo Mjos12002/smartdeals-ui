@@ -1,8 +1,11 @@
 'use server'
 
+import { Bars2Icon } from "@heroicons/react/16/solid"
+import { Bars4Icon } from "@heroicons/react/24/solid"
 import { cookies } from "next/headers"
 import Link from "next/link"
 
+//Header is the server component used to render the header of the application.
 export default async function Header() {
 
     const cookie = await cookies()
@@ -10,23 +13,28 @@ export default async function Header() {
 
     return (
         <header className="flex justify-between p-2 bg-[#F7F7F7]">
-            <div className="logo flex rounded-sm border border-[#fff]">
-                <div className="flex items-center">
+            <div className="bg-[#000] flex border border-[#002C61] text-[#fff] m-1">
+                <div className="flex items-center p-1">
                     Smart
                 </div>
-                <div className="flex items-center rounded-sm font-thin">
+                <div className="flex items-center font-thin bg-[#fff] text-[#01224b] p-1">
                     Deals
                 </div>
             </div>
-            <div className="header-menu">
+            <div className="hidden sm:flex md:flex lg:flex xl:flex 2xl:flex items-center">
                 <ul className="flex gap-4 mr-4 bg-[#E1E1E3] text-black rounded-lg opacity-80 border border-[#fff] m-0">
                     <li className="p-2 bg-[#000] border rounded-lg text-white"><Link href="/">Home</Link></li>
                     <li className="p-2 flex items-center"><Link href="/about">About Us</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signin">Sign In</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signup">Sign Up</Link></li>
-                    {token ? <li className="p-1 flex items-center">{cookie.get("username")?.value}</li>: ''}
+                    {token ? <li className="p-1 flex items-center">{cookie.get("username")?.value}</li> : ''}
                 </ul>
+            </div>
+            <div className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden flex items-center">
+                <Bars4Icon className="h-6 w-6 text-[#10C200]" />
+                
             </div>
         </header>
     )
 }
+

@@ -25,27 +25,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.logo {
-  background-color: #002C61;
-  color: white;
-  border-radius: 1px solid #002C61;
-  margin: 5px;
-  border: #002C61 solid 1px;
-  
-}
-
-.logo div:first-child {
-  font-weight: bold;
-    padding: 5px;
-}
-
-.logo div:last-child {
-  font-weight: normal;  
-  background-color: white;
-  color: #01224b;
-  padding: 5px;
-}
-
 input:focus {
     outline: none;
 }
