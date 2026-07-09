@@ -1,9 +1,8 @@
 'use server'
 
-import { Bars2Icon } from "@heroicons/react/16/solid"
-import { Bars4Icon } from "@heroicons/react/24/solid"
 import { cookies } from "next/headers"
 import Link from "next/link"
+import MenuComponent from "./menu.component"
 
 //Header is the server component used to render the header of the application.
 export default async function Header() {
@@ -31,8 +30,7 @@ export default async function Header() {
                 </ul>
             </div>
             <div className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden flex items-center">
-                <Bars4Icon className="h-6 w-6 text-[#10C200]" />
-                
+                <MenuComponent username={cookie.get("username")?.value} />
             </div>
         </header>
     )
