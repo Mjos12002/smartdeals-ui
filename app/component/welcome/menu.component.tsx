@@ -15,23 +15,23 @@ export default function MenuComponent({ username }: { username?: string }) {
                 className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg outline-1 outline-black/5 transition data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in"
             >
                 <div className="py-1">
-                    <MenuItem>
+                    <MenuItem as="div">
+                        {username ? <span className="block px-4 py-2 text-md font-bold text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden">{username}</span> : ''}
+                    </MenuItem>
+                    <MenuItem as="div">
                         <Link className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden" href="/">Home</Link>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem as="div">
                         <Link className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden" href="/about">About Us</Link>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem as="div">
                         <Link className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden" href="/signin">Sign In</Link>
                     </MenuItem>
-                    <MenuItem>
+                    <MenuItem as="div">
                         <Link className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden" href="/signup">Sign Up</Link>
                     </MenuItem>
-                    <MenuItem>
-                        {username ? <span className="block px-4 py-2 text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden">{username}</span> : ''}
-                    </MenuItem>
                     <form action="#" method="POST">
-                        <MenuItem>
+                        <MenuItem as="div">
                             <button
                                 type="submit"
                                 className="block w-full px-4 py-2 text-left text-sm text-gray-700 data-focus:bg-gray-100 data-focus:text-gray-900 data-focus:outline-hidden"

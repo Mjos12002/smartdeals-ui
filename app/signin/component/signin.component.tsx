@@ -24,7 +24,7 @@ const SignInComponent = () => {
     }
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full">
 
             <div className="ml-0 mt-6 font-medium text-3xl text-[#0FCF02]">Sign In</div>
             <form action={signin}>
