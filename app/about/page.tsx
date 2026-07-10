@@ -8,7 +8,7 @@ export default function About() {
                     About Smart Deals
                 </p>
                 <p className="text-justify">
-                    Is a web application that provides users with the best deals and discounts on various products and services.
+                    Smart Deals is a web application that provides users with the best deals and discounts on various products and services.
                 </p>
             </div>
 
@@ -17,7 +17,7 @@ export default function About() {
                     Our mission
                 </p>
                 <p className="text-justify pb-10">
-                    Our mission is to help users <span className="font-bold">save money</span> while shopping online by providing them with the latest deals and offers from different retailers. We strive to make the shopping experience more enjoyable and affordable for our users.
+                    Our mission is to help our customers <span className="font-bold">save money</span> while shopping online by providing them with the latest deals and offers from different retailers. We strive to make the shopping experience more enjoyable and affordable for our users.
                 </p>
             </div>
 
