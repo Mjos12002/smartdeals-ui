@@ -17,7 +17,7 @@ export default function About() {
                     Our mission
                 </p>
                 <p className="text-justify pb-10">
-                    Our mission is to help our customers <span className="font-bold">save money</span> while shopping online by providing them with the latest deals and offers from different retailers. We strive to make the shopping experience more enjoyable and affordable for our users.
+                    Our mission is to help our customers <span className="font-bold">save money</span> while shopping online by providing them with the latest deals and offers from different retailers. We strive to make the shopping experience more enjoyable and affordable for our customers.
                 </p>
             </div>
 
