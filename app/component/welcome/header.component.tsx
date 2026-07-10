@@ -12,11 +12,11 @@ export default async function Header() {
 
     return (
         <header className="flex justify-between p-2 bg-[#F7F7F7]">
-            <div className="bg-[#000] flex text-[#fff] m-0 rounded-md shadow-md border border-[#fff]">
+            <div className="bg-[#000] flex text-[#fff] m-0 rounded-md shadow-md border border-[#EDEDED]">
                 <div className="flex items-center p-1">
                     Smart
                 </div>
-                <div className="flex items-center font-thin bg-[#fff] text-[#00A60E] p-1">
+                <div className="flex items-center font-bold bg-[#fff] text-[#00A60E] p-1">
                     Deals
                 </div>
             </div>
