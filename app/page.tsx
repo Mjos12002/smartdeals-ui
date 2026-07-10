@@ -68,7 +68,7 @@ export default function Welcome() {
                 <div className="flex flex-col sm:flex-wrap sm:flex-row lg:flex-wrap lg:flex-row">
                     {loading && <p className="text-center text-green-500 font-thin text-lg">Loading ....</p>}
                     {loadingError && <p className="text-center text-red-500 font-thin text-lg">Error loading data, the technical team has been notified</p>}
-                    {(products.length === 0 && !loadingError) && <p className="text-center text-gray-500 font-thin text-lg p-2">No products available</p>}
+                    {(products.length === 0 && !loadingError && !loading) && <p className="text-center text-gray-500 font-thin text-lg p-2">No products available</p>}
                     {
                         products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />) 
                     }
