@@ -8,12 +8,13 @@ var initialState: FormState = {
     message: ""
 }
 
+//SignUpComponent is used to render the signup form and handle its submission
 const SignUpComponent = () => { 
 
     const [state, signup, isPending] = useActionState(userSignUp, undefined)
 
     return (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 w-full">
             <div className="ml-0 mt-6 font-medium text-3xl text-[#0FCF02]">Sign Up</div>
             <form action={ signup }>
                 <ul className="flex gap-4 flex-col m-0">

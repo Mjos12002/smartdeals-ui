@@ -2,31 +2,15 @@ import SignUpComponent from "./component/signup.component";
 
 export default function SignUp() {
     return (
-        <div className="h-screen overflow-y-scroll">
-            <div className="bg-white m-4 h-screen rounded-lg border-[#E8E8E8] border drop-shadow-sm overflow-y-scroll">
+        
+        <div className="overflow-y-scroll m-3 bg-[#F0F0F0] h-screen flex flex-col items-center justify-center border border-[#D9D9D9] lg:flex lg:flex-row lg:shadow-md lg:rounded-md">
 
-                <div className="flex justify-stretch">
-                    <div className="flex flex-row w-[100%]">
-                        
-                        <div className="basis-1/3 flex flex-col items-center justify-center">
-                            <div className="w-[90%]">
-                                <SignUpComponent />
-                            </div>
-                        </div>
-
-                        <div className="basis-2/3 h-screen flex flex-col items-center justify-center relative">
-
-                            <div className="w-[100%] h-screen bg-red-200 absolute top-0 left-0 bg-[#010014] opacity-60 bg-gradient-to-r md:from-[#FAFAFA] via-[#C2C0C0] to-[#A4A6A4]">
-                            </div>
-                            <div className="z-10 flex flex-col items-center justify-center bg-[#02A8B8] p-2 border border-[#fff] rounded-sm opacity-70">
-                                <h1 className="text-[#fff] text-6xl whitespace-nowrap">You don't have an account?</h1>
-                                <h3 className="text-[#F7F7F7] whitespace-nowrap">Sign Up to start your business</h3>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
+            <div className="bg-white w-[95%] rounded-md shadow-md p-2 lg:basis-1/3 lg:h-full lg:flex lg:items-center lg:justify-center lg:p-5 lg:rounded-[0px]">
+                <SignUpComponent />
+            </div>
+            <div className="hidden lg:basis-2/3 lg:flex lg:flex-col items-center justify-center h-full bg-[#F5F5F5]">
+                <p className="text-[#000014] text-6xl whitespace-nowrap">Welcome to Smart Deals</p>
+                <p className="text-[#00BF07] whitespace-nowrap font-thin text-2xl">Make your Deals Smart</p>
             </div>
 
         </div>
