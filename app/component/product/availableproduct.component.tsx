@@ -19,8 +19,8 @@ export function AvailableProductComponent({
     imageurl: string
 }) {
     return (
-        <div className="text-black-500 lg:w-[25%] md:w-[50%] sm:w-[100%] flex flex-col p-1">
-            <div className="w-full h-[400] border border-[#fff] relative shadow-sm">
+        <div className="flex flex-col sm:w-[50%] lg:w-[25%] md:w-[50%] p-0">
+            <div className="w-full h-[400] border border-[#fff] relative shadow-md">
                 <Image
                     src={imageurl}
                     alt={name}

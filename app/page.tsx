@@ -26,27 +26,35 @@ interface IProduct {
     logo: string
 }
 
+
+//Welcome is used to display the products / service available 
 export default function Welcome() {
 
-    var [product, setProduct] = useState<IProduct[]>()
+    // state variables holding the products, loading state and error state
+    var [products, setProducts] = useState<IProduct[]>([])
+    var [loading, setLoading] = useState<boolean>(true)
+    var [loadingError, setLoadingError] = useState<boolean>(false)
 
+    // Fetching the products from the backend using the useEffect hook
     useEffect(() => {
         getProducts()
             .then(data => {
-                const res: IProduct[] = data.data
-                setProduct(res)
+                const productResponse: IProduct[] = data.data
+                setProducts(productResponse)
+                setLoading(false)
             })
-            .catch(err => console.log(err))
-
-
+            .catch(err => {
+                setLoadingError(true)
+            })
     }, [])
 
     return (
-        <div className="h-screen overflow-y-scroll bg-gradient-to-r md:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
+        <div className="h-screen overflow-y-scroll bg-gradient-to-r sm:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
-            <div className="flex justify-center pt-2">
-                <div className="border border-[#C7C9C9] rounded-lg flex w-[90%] sm:w-[50%] md:w-[50%] justify-between bg-[#fff]">
-                    <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[80%] bg-[#fff]" />
+            <div className="flex justify-center">
+                
+                <div className="border border-[#C7C9C9] rounded-lg flex w-[100%] m-3 justify-between bg-[#fff] lg:w-[50%]">
+                    <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" />
                     <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]">
                         <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeWidth="3" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
@@ -55,10 +63,13 @@ export default function Welcome() {
                 </div>
             </div>
 
-            <div className="bg-white m-7 h-screen rounded-lg border border-[#C6C3C3] opacity-100 border border-shadow overflow-y-scroll">
-                <div className="flex flex-wrap">
+            <div className="bg-white m-3 h-screen rounded-lg border border-[#C6C3C3] opacity-100 border border-shadow overflow-y-scroll">
+                <div className="flex flex-col sm:flex-wrap sm:flex-row lg:flex-wrap lg:flex-row">
+                    {loading && <p className="text-center text-green-500 font-thin text-lg">Loading ....</p>}
+                    {loadingError && <p className="text-center text-red-500 font-thin text-lg">Error loading data, the technical team has been notified</p>}
+                    {products.length === 0 && <p className="text-center text-gray-500 font-thin text-lg">No products available</p>}
                     {
-                        product != undefined && product.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />) 
+                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />) 
                     }
                 </div>
             </div>
