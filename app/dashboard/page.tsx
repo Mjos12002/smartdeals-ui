@@ -1,7 +1,7 @@
 'use client'
 import { MapPinIcon, UserCircleIcon, WalletIcon } from "@heroicons/react/16/solid"
 import { ShoppingBagIcon } from "@heroicons/react/24/outline"
-import { HomeIcon } from "@heroicons/react/24/outline"
+import { HomeIcon, Cog6ToothIcon } from "@heroicons/react/24/outline"
 import { useEffect, useState } from "react"
 import ProfileComponent from "./component/profile/profile.component"
 import BusinessComponent from "./component/business/business.component"
@@ -12,46 +12,60 @@ import ProductComponent from "./component/product/product.component"
 export default function Dashboard() {
 
     const [componentName, setComponentType] = useState<string>('')
+    const [visibility, setVisibility] = useState<string>('hidden')
+
+    const styling = "bg-[#ff00aa]"
+
+    // Function to toggle the menu visibility
+    const toggleMenu = () => {
+        setVisibility(visibility === 'hidden' ? 'visible absolute bg-white z-100' : 'hidden')
+    }
     useEffect(() => {
         console.log(`use effect ${componentName}`)
     }, [componentName])
+
     const processComponent = (t: string) => {
         setComponentType(t)
+        setVisibility('hidden')
     }
 
     return (
-        <div className="flex bg-gradient-to-r md:from-[#DEDEDE] via-[#F5F5F5] to-[#FAFAFA] h-screen overflow-y-scroll">
-            <div className="basis-1/5 h-[90%] p-2">
-                <div className="w-[100%] bg-[#F5F5F5] border border-[#D9D7D7] rounded-md drop-shadow-sm p-2">
-                    <h2 className="text-[#00AB00] text-2xl mb-3 font-bold">Quick Actions</h2>
-                    <ul className="flex gap-2 flex-col ">
-                        <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
-                            <UserCircleIcon width={23} height={23} fill="#F0C402" color="#F0C402" />
-                            <div className="font-thin" onClick={() => processComponent('Profile')}>Profile</div>
-                        </li>
-                        <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
-                            <MapPinIcon width={23} height={23} fill="#F51E02" />
-                            <div className="font-thin" onClick={() => processComponent('Address')}>Address</div>
-                        </li>
-                        <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
-                            <HomeIcon width={23} height={23} fill="#2CC900" color="#2CC900" />
-                            <div className="font-thin" onClick={() => processComponent('Business')}>Business</div>
-                        </li>
-                        <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
-                            <ShoppingBagIcon width={23} height={23} fill="#024DF0" color="#024DF0" />
-                            <div className="font-thin" onClick={() => processComponent('Products')}>Products</div>
-                        </li>
-                    </ul>
-                </div>
+        <div className="flex bg-[#EDEDED] h-screen overflow-y-scroll flex-col">
+            <div className="bg-[#00BA16] size-fit p-2 rounded-r-sm mt-2 drop-shadow-sm">
+                <Cog6ToothIcon width={24} height={24} color="#fff" onClick={toggleMenu} />
             </div>
-
-            <div className="basis-4/5 h-[90%] p-2">
-                <div className="w-[100%] bg-[#F5F5F5] border border-[#D9D7D7] rounded-md drop-shadow-sm">
-                    {componentName == "Profile" && <ProfileComponent />}
-                    {componentName == "Business" && <BusinessComponent />}
-                    {componentName == "Address" && <AddressComponent />}
-                    {componentName == "Products" && <ProductComponent />}
+            <div className="relative">
+                <div className={visibility}>
+                    <div className="bg-white rounded-r-md size-fit drop-shadow-sm">
+                        <ul className="flex gap-2 flex-col">
+                            <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
+                                <UserCircleIcon width={23} height={23} fill="#F0C402" color="#F0C402" />
+                                <div className="font-thin" onClick={() => processComponent('Profile')}>Profile</div>
+                            </li>
+                            <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
+                                <MapPinIcon width={23} height={23} fill="#F51E02" />
+                                <div className="font-thin" onClick={() => processComponent('Address')}>Address</div>
+                            </li>
+                            <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
+                                <HomeIcon width={23} height={23} fill="#2CC900" color="#2CC900" />
+                                <div className="font-thin" onClick={() => processComponent('Business')}>Business</div>
+                            </li>
+                            <li className="w-[90%] flex items-center p-2 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1] hover:rounded-md">
+                                <ShoppingBagIcon width={23} height={23} fill="#024DF0" color="#024DF0" />
+                                <div className="font-thin" onClick={() => processComponent('Products')}>Products</div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
+                <div className="p-1 absolute w-[100%]">
+                    <div className="w-[100%] bg-[#fff] border border-[#fff] rounded-md drop-shadow-sm">
+                        {componentName == "Profile" && <ProfileComponent />}
+                        {componentName == "Business" && <BusinessComponent />}
+                        {componentName == "Address" && <AddressComponent />}
+                        {componentName == "Products" && <ProductComponent />}
+                    </div>
+                </div>
+
             </div>
         </div>
     )

@@ -15,13 +15,13 @@ export default function CreateBusinessComponent() {
                 <form action={addBusiness}>
                     <ul className="flex gap-4 flex-col m-0">
                         <li>
-                            <input type="text" placeholder="Name" name="name" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                            <input type="text" placeholder="Name" name="name" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                         </li>
                         <li>
-                            <input type="text" placeholder="Description" name="description" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                            <input type="text" placeholder="Description" name="description" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                         </li>
                         <li>
-                            <input type="file" placeholder="Logo" name="logo_url" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                            <input type="file" placeholder="Logo" name="logo_url" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                         </li>
                         <li>
                             <button type="submit" disabled={isPending} className="bg-[#02C225] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>

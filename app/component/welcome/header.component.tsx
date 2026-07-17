@@ -1,6 +1,6 @@
 'use server'
 
-import { cookies } from "next/headers"
+import { cookies, headers } from "next/headers"
 import Link from "next/link"
 import MenuComponent from "./menu.component"
 
@@ -9,6 +9,8 @@ export default async function Header() {
 
     const cookie = await cookies()
     const token = cookie.get("token")?.value
+    const header = await headers()
+    console.log("url: ", header.get("x-url"))
 
     return (
         <header className="flex justify-between p-2 bg-[#F7F7F7]">
@@ -26,7 +28,7 @@ export default async function Header() {
                     <li className="p-2 flex items-center"><Link href="/about">About Us</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signin">Sign In</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signup">Sign Up</Link></li>
-                    {token ? <li className="p-1 flex items-center">{cookie.get("username")?.value}</li> : ''}
+                    {token ? <li className="p-1 flex items-center"><Link href="/dashboard">{cookie.get("username")?.value}</Link></li> : ''}
                 </ul>
             </div>
             <div className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden flex items-center">

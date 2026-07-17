@@ -14,34 +14,34 @@ export default function CreateAddressComponent() {
             <form action={addAddress}>
                 <ul className="flex gap-4 flex-col m-0">
                     <li>
-                        <input type="text" placeholder="Street" name="street" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Street" name="street" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Popular name" name="popular_name" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Popular name" name="popular_name" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Province" name="province" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Province" name="province" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="District" name="district" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="District" name="district" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Sector" name="sector" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Sector" name="sector" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Longitude Latitude" name="long_lat" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Longitude Latitude" name="long_lat" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="email" placeholder="Email" name="email" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="email" placeholder="Email" name="email" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Phone number" name="phone_number" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Phone number" name="phone_number" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Twitter" name="twitter" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Twitter" name="twitter" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
-                        <input type="text" placeholder="Facebook" name="facebook" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                        <input type="text" placeholder="Facebook" name="facebook" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                     </li>
                     <li>
                         <button type="submit" disabled={isPending} className="bg-[#02C225] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>

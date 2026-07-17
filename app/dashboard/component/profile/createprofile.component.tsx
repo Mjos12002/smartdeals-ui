@@ -15,10 +15,10 @@ export default function CreateProfileComponent() {
                 <form action={addProfile}>
                     <ul className="flex gap-4 flex-col m-0">
                         <li>
-                            <input type="text" placeholder="First name" name="first_name" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                            <input type="text" placeholder="First name" name="first_name" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                         </li>
                         <li>
-                            <input type="text" placeholder="Last name" name="last_name" className="rounded-sm border-gray-300 border border-shadow w-[30%] p-2" />
+                            <input type="text" placeholder="Last name" name="last_name" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
                         </li>
                         <li>
                             <button type="submit" disabled={isPending} className="bg-[#02C225] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>
