@@ -1,6 +1,7 @@
 'use server'
 import { httpService } from "@/service/http.service";
 import { cookies } from "next/headers";
+import { getEnv } from "@/utils/env.utils";
 
 // Structuring the validation 
 export type ValidationStructure = {
@@ -21,7 +22,8 @@ export async function getAddress(): Promise<any> {
     const cookie = await cookies()
     const tkn: string | undefined = cookie.get("token")?.value
     if (tkn != undefined) {
-        return httpService.getAddress("http://localhost:8090/api/secure/v1/address", tkn)
+        const devURL = getEnv("dev").value
+        return httpService.getAddress(`${devURL}secure/v1/address`, tkn)
     }
 }
 
@@ -79,7 +81,7 @@ export async function createAddress(prevState: FormState, formData: FormData): P
     if (facebook == "" || facebook == null) {
         validationError.push({ description: "Facebook is empty", control: "facebook" })
     }
-
-    return httpService.createAddress("http://localhost:8090/api/v1/address", { street, popular_name, province, district, sector, long_lat, email, phone_number, twitter, facebook })
+ const devURL = getEnv("dev").value
+    return httpService.createAddress(`${devURL}secure/v1/address`, { street, popular_name, province, district, sector, long_lat, email, phone_number, twitter, facebook })
 
 }

@@ -25,7 +25,6 @@ export async function getProfile(): Promise<any> {
     const token: string | undefined = cookie.get("token")?.value
     if(token != undefined) {
         const devURL = getEnv("dev").value
-        console.log(devURL)
         return httpService.getProfile(`${devURL}secure/v1/profile`, token)
     }
 }
@@ -46,7 +45,8 @@ export async function createProfile(prev: FormState, formData: FormData): Promis
     const cookie = await cookies()
     const tkn: string | undefined = cookie.get("token")?.value
     if (tkn != undefined) {
-        return httpService.createProfile("http://localhost:8090/api/secure/v1/profile", tkn, { first_name, last_name })
+        const devURL = getEnv("dev").value
+        return httpService.createProfile(`${devURL}secure/v1/profile`, tkn, { first_name, last_name })
     }
 
 }
