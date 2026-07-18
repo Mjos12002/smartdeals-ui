@@ -37,7 +37,7 @@ export default function ViewAddressComponent() {
     }, [])
 
     return (
-        <div className="flex flex-col gap-4 p-4">
+        <div className="flex flex-col gap-4 p-1">
             <h2 className="text-2xl font-bold text-[#010121]">
                 Available Addresses
             </h2>

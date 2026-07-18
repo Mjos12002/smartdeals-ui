@@ -6,8 +6,8 @@ import CreateProductComponent from "./createproduct.component"
 // ProductComponent is the component used to manage products
 export default function ProductComponent() {
 
-    const [productAction, setProductAction] = useState("")
-    const [viewProductStyle, setViewProductStyle] = useState('flex items-center p-2 text-lg')
+    const [productAction, setProductAction] = useState('View product')
+    const [viewProductStyle, setViewProductStyle] = useState('border-b-3 border-[#3CC202] flex items-center p-2 text-lg')
     const [addProductStyle, setAddProductStyle] = useState('flex items-center p-2 text-lg')
     
     // Processing profile action
@@ -30,7 +30,7 @@ export default function ProductComponent() {
                 <li className={addProductStyle} onClick={() => processProductAction('Add product')}>New products</li>
             </ul>  
 
-            <div>
+            <div className="border-t border-t-[#02BA02]">
                 {productAction == "View product" && <ViewProductComponent/>}
                 {productAction == "Add product" && <CreateProductComponent/>}
             </div>

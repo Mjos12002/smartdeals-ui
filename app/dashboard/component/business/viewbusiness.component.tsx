@@ -27,7 +27,7 @@ export default function ViewBusinessComponent() {
             })
     }, [])
     return (
-        <div className="flex flex-col gap-4 p-4">
+        <div className="flex flex-col gap-4 p-1">
             <div>
                 {responseCode == 401 ? <div>Unauthorized user</div> : <span></span>}
             </div>

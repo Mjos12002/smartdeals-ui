@@ -6,9 +6,9 @@ import CreateProfileComponent from "./createprofile.component"
 //ProfileComponent is a component used to manage the profile
 export default function ProfileComponent() {
 
-    const [viewProfileStyle, setViewProfileStyle] = useState('flex items-center p-2 text-lg')
+    const [viewProfileStyle, setViewProfileStyle] = useState('border-b-3 border-[#3CC202] flex items-center p-2 text-lg')
     const [addProfileStyle, setAddProfileStyle] = useState('flex items-center p-2 text-lg')
-    const [profileAction, setProfileAction] = useState("")    
+    const [profileAction, setProfileAction] = useState("View profile")    
 
     // Processing profile action
     const processProfileAction = (act: string) => {
@@ -29,7 +29,7 @@ export default function ProfileComponent() {
                 <li className={viewProfileStyle} onClick={() => processProfileAction('View profile')}>View profile</li>
                 <li className={addProfileStyle} onClick={() => processProfileAction('New profile')}>New profile</li>
             </ul>
-            <div>
+            <div className="border-t border-t-[#02BA02]">
                 {profileAction == "View profile" && <ViewProfileComponent />}
                 {profileAction == "New profile" && <CreateProfileComponent />}
             </div>

@@ -62,12 +62,12 @@ export default function CreateProductComponent() {
                             <select name="product_categories_id" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2">
                                 {
                                     productCategory.length > 0 && productCategory.map((d) => <option key={d.ID}>{d.name}</option>)
-                                }
-                                
+                                }  
                             </select>
                         </li>
                         <li>
-                            <input type="file" placeholder="Logo" name="logo" className="rounded-sm border-gray-300 border border-shadow w-[100%] p-2" />
+                            <label htmlFor='logo' className="rounded-sm border-gray-300 border border-shadow p-2 w-[100%] block">Choose product logo</label>
+                            <input type="file" placeholder="Logo" id="logo" name="logo" className="hidden" />
                         </li>
                         <li>
                             <button type="submit" disabled={isPending} className="bg-[#02C225] rounded-sm text-white p-2 cursor-pointer">{isPending ? "Processing ...." : "Submit"}</button>
