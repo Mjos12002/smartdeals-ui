@@ -39,9 +39,14 @@ export default function Welcome() {
     useEffect(() => {
         getProducts()
             .then(data => {
-                const productResponse: IProduct[] = data.data
-                setProducts(productResponse)
-                setLoading(false)
+                if (data.data && data.data != undefined) {
+                    const productResponse: IProduct[] = data.data
+                    setProducts(productResponse)
+                    setLoading(false)
+                }else if (data.data == undefined){
+                    setLoading(false)
+                }   
+
             })
             .catch(err => {
                 setLoadingError(true)
@@ -53,7 +58,7 @@ export default function Welcome() {
         <div className="h-screen overflow-y-scroll bg-gradient-to-r sm:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
             <div className="flex justify-center">
-                
+
                 <div className="border border-[#C7C9C9] rounded-lg flex w-[100%] m-3 justify-between bg-[#fff] lg:w-[50%]">
                     <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" />
                     <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]">
@@ -70,7 +75,7 @@ export default function Welcome() {
                     {loadingError && <p className="text-center text-red-500 font-thin text-lg">Error loading data, the technical team has been notified</p>}
                     {(products.length === 0 && !loadingError && !loading) && <p className="text-center text-gray-500 font-thin text-lg p-2">No products available</p>}
                     {
-                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />) 
+                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />)
                     }
                 </div>
             </div>
