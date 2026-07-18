@@ -45,7 +45,7 @@ const httpService = {
 
 		}
 	},
-	createAddress: async function (url: string, { street, popular_name, province, district, sector, long_lat, email, phone_number, twitter, facebook }: { street: string, popular_name: string, province: string, district: string, sector: string, long_lat: string, email: string, phone_number: string, twitter: string, facebook: string }) {
+	createAddress: async function (url: string, { street, popular_name, province, district, email, phone_number, twitter, facebook, instagram}: { street: string, popular_name: string, province: string, district: string, email: string, phone_number: string, twitter: string, facebook: string, instagram: string }) {
 		// This method is used to send a request to create a new record of address
 		try {
 			const response = await fetch(url, {
@@ -53,7 +53,7 @@ const httpService = {
 				headers: {
 					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify({ street, popular_name, province, district, sector, long_lat, email, phone_number, twitter, facebook })
+				body: JSON.stringify({ street, popular_name, province, district, email, phone_number, twitter, facebook, instagram })
 			})
 			return await response.json()
 

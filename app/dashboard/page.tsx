@@ -38,19 +38,15 @@ export default function Dashboard() {
                 <div className={visibility}>
                     <div className="bg-white rounded-r-md size-fit drop-shadow-sm w-[100%]">
                         <ul className="flex gap-2 flex-col">
-                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1]">
+                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#F5F5F5] hover:border-[#D1D1D1]">
                                 <UserCircleIcon width={23} height={23} fill="#F0C402" color="#F0C402" />
                                 <div className="font-thin" onClick={() => processComponent('Profile')}>Profile</div>
                             </li>
-                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1]">
-                                <MapPinIcon width={23} height={23} fill="#F51E02" />
-                                <div className="font-thin" onClick={() => processComponent('Address')}>Address</div>
-                            </li>
-                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1]">
+                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#F5F5F5] hover:border-[#D1D1D1]">
                                 <HomeIcon width={23} height={23} fill="#2CC900" color="#2CC900" />
                                 <div className="font-thin" onClick={() => processComponent('Business')}>Business</div>
                             </li>
-                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#E0E0E0] hover:border-[#D1D1D1]">
+                            <li className="w-[100%] flex items-center p-1 gap-1 cursor-pointer hover:bg-[#F5F5F5] hover:border-[#D1D1D1]">
                                 <ShoppingBagIcon width={23} height={23} fill="#024DF0" color="#024DF0" />
                                 <div className="font-thin" onClick={() => processComponent('Products')}>Products</div>
                             </li>

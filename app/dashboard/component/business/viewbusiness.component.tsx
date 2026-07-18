@@ -60,7 +60,7 @@ export default function ViewBusinessComponent() {
                                                 {d.logo_url}
                                             </td>
                                             <td className="px-6 py-4">
-                                                Edit
+                                                Product
                                             </td>
                                         </tr>
                                     ))

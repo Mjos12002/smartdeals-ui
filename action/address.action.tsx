@@ -33,12 +33,11 @@ export async function createAddress(prevState: FormState, formData: FormData): P
     const popular_name = formData.get("popular_name") as string
     const province = formData.get("province") as string
     const district = formData.get("district") as string
-    const sector = formData.get("sector") as string
-    const long_lat = formData.get("long_lat") as string
     const email = formData.get("email") as string
     const phone_number = formData.get("phone_number") as string
     const twitter = formData.get("twitter") as string
     const facebook = formData.get("facebook") as string
+    const instagram = formData.get("instagram") as string
 
     const validationError: ValidationStructure[] = []
 
@@ -58,14 +57,6 @@ export async function createAddress(prevState: FormState, formData: FormData): P
         validationError.push({ description: "District is empty", control: "district" })
     }
 
-    if (sector == "" || sector == null) {
-        validationError.push({ description: "Sector is empty", control: "sector" })
-    }
-
-    if (long_lat == "" || long_lat == null) {
-        validationError.push({ description: "Longitude Latitude is empty", control: "long_lat" })
-    }
-
     if (email == "" || email == null) {
         validationError.push({ description: "Email is empty", control: "email" })
     }
@@ -82,6 +73,6 @@ export async function createAddress(prevState: FormState, formData: FormData): P
         validationError.push({ description: "Facebook is empty", control: "facebook" })
     }
     const devURL = getEnv("dev").value
-    return httpService.createAddress(`${devURL}secure/v1/address`, { street, popular_name, province, district, sector, long_lat, email, phone_number, twitter, facebook })
+    return httpService.createAddress(`${devURL}secure/v1/address`, { street, popular_name, province, district, email, phone_number, twitter, facebook, instagram })
 
 }
