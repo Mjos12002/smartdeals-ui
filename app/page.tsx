@@ -4,16 +4,23 @@ import { getProducts } from "@/action/product.action"
 import { useEffect, useState } from "react"
 import { AvailableProductComponent } from "./component/product/availableproduct.component"
 
-interface IProductData {
-    ID: number
-    product_name: string
-    price: number
-    product_description: string
-    discount: number
-    discountPrice: number
-
+// Ibusiness is an representation of the business
+interface IBusiness {
+    name: string
+	description: string
+	logoURL: string
+	street: string
+	popularName: string
+	email: string
+	phoneNumber: string
+	twitter: string
+	facebook: string
+	instagram: string
+	province: string
+	district: string
 }
 
+// IProduct is an representation of the product
 interface IProduct {
     ID: number
     name: string
@@ -21,9 +28,14 @@ interface IProduct {
     description: string
     discount: number
     discounted_price: number
-    discount_start_date: string
-    discount_end_date: string
     logo: string
+    business: IBusiness
+    category: IProductCategory
+}
+
+// 
+interface IProductCategory {
+    name: string
 }
 
 
@@ -41,6 +53,7 @@ export default function Welcome() {
             .then(data => {
                 if (data.data && data.data != undefined) {
                     const productResponse: IProduct[] = data.data
+                    console.log(productResponse)
                     setProducts(productResponse)
                     setLoading(false)
                 }else if (data.data == undefined){
@@ -75,7 +88,7 @@ export default function Welcome() {
                     {loadingError && <p className="text-center text-red-500 font-thin text-lg">Error loading data, the technical team has been notified</p>}
                     {(products.length === 0 && !loadingError && !loading) && <p className="text-center text-gray-500 font-thin text-lg p-2">Thansk for visiting Smart Deals, We are coming very soon !!!</p>}
                     {
-                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} price={d.price} name={d.name} discount={d.discount} discounted_price={d.discounted_price} discount_start_date={d.discount_start_date} discount_end_date={d.discount_end_date} imageurl={`http://localhost:8090/${d.logo}`} />)
+                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} category={d.category.name} price={d.price} name={d.name} discount={d.discount} business={d.business.name} discounted_price={d.discounted_price} imageurl={`http://localhost:8090/${d.logo}`} />)
                     }
                 </div>
             </div>

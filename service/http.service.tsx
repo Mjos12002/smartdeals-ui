@@ -80,7 +80,7 @@ const httpService = {
 
 		}
 	},
-	createProfile: async function (url: string, token: string, { first_name, last_name }: { first_name: string, last_name: string }) {
+	createProfile: async function (url: string, token: string, { first_name, last_name, email, phone_number }: { first_name: string, last_name: string, email: string, phone_number: string }) {
 		try {
 
 			const response = await fetch(url, {
@@ -89,7 +89,7 @@ const httpService = {
 					'Content-Type': 'application/json',
 					"Authorization": `Bearer ${token}`
 				},
-				body: JSON.stringify({ first_name, last_name })
+				body: JSON.stringify({ first_name, last_name, email, phone_number })
 			})
 			return await response.json()
 

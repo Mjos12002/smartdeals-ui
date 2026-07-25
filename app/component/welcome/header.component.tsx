@@ -31,7 +31,7 @@ export default async function Header() {
                     {token ? <li className="p-1 flex items-center"><Link href="/dashboard">{cookie.get("username")?.value}</Link></li> : ''}
                 </ul>
             </div>
-            <div className="sm:hidden md:hidden lg:hidden xl:hidden 2xl:hidden flex items-center">
+            <div className="sm:hidden flex items-center">
                 <MenuComponent username={cookie.get("username")?.value} />
             </div>
         </header>

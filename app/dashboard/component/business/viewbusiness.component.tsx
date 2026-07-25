@@ -1,12 +1,11 @@
 import { getBusiness } from "@/action/business.action"
-import { httpService } from "@/service/http.service"
-import { unescape } from "querystring"
 import { useEffect, useState } from "react"
 
 interface BusinessResponse {
     name: string
     description: string
-    logo_url: string
+    email: string
+    phone_number: string
 }
 
 
@@ -14,7 +13,7 @@ interface BusinessResponse {
 // ViewBusinessComponent is used to load the list of businesses
 export default function ViewBusinessComponent() {
 
-    const [business, setBusiness] = useState<BusinessResponse[]>([{ name: "", description: "", logo_url: "" }])
+    const [business, setBusiness] = useState<BusinessResponse[]>([{ name: "", description: "", email: "", phone_number: "" }])
     const [responseCode, setResponseCode] = useState<Number>(0)
     useEffect(() => {
         getBusiness()
@@ -42,14 +41,15 @@ export default function ViewBusinessComponent() {
                                 <tr>
                                     <th scope="col" className="px-6 py-3 font-medium text-[#20C402]">Name</th>
                                     <th scope="col" className="px-6 py-3 font-medium">Description</th>
-                                    <th scope="col" className="px-6 py-3 font-medium">Logo</th>
+                                    <th scope="col" className="px-6 py-3 font-medium">Email</th>
+                                    <th scope="col" className="px-6 py-3 font-medium">Phone number</th>
                                     <th scope="col" className="px-6 py-3 font-medium">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
                                     business.map(d => (
-                                        <tr className="bg-neutral-primary border-b border-[#CCCCCC]" key={d.logo_url}>
+                                        <tr className="bg-neutral-primary border-b border-[#CCCCCC]" key={d.email}>
                                             <th scope="row" className="px-6 py-4 font-medium text-heading whitespace-nowrap text-[#1DB300] font-bold">
                                                 {d.name}
                                             </th>
@@ -57,7 +57,10 @@ export default function ViewBusinessComponent() {
                                                 {d.description}
                                             </td>
                                             <td className="px-6 py-4">
-                                                {d.logo_url}
+                                                {d.email}
+                                            </td>
+                                            <td className="px-6 py-4">
+                                                {d.phone_number}
                                             </td>
                                             <td className="px-6 py-4">
                                                 Product
