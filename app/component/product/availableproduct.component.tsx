@@ -1,5 +1,7 @@
 'use client'
 import Image from 'next/image';
+import Link from "next/link"
+
 export function AvailableProductComponent({
     name,
     price,
@@ -30,9 +32,9 @@ export function AvailableProductComponent({
                 <div className="absolute bottom-0 left-0 w-full bg-[#fff] p-2">
                     <ul className='flex gap-2 flex-col'>
                         <li>
-                            <div className="font-bold text-lg text-[#00001F]">{category}</div>
-                            <div>{name}</div>
-                            </li>
+                            <div className="font-bold text-lg text-[#00001F]">{name}</div>
+                            <div className='text-[#403F3F]'>{category}</div>
+                        </li>
                         <li>
                             <div className='flex gap-1 size-fit border border-[#F2A072] rounded-sm'>
                                 <div className='line-through text-lg text-[#fff] bg-[#F05B05] size-fit p-1'>
@@ -43,7 +45,18 @@ export function AvailableProductComponent({
                                 </div>
                             </div>
                         </li>
-                        <li><span className="font-light text-sm text-[#002E5E]">{business}</span></li>
+                        <li>
+                            <div className='flex justify-between'>
+                                <div className='fit-content'>
+                                    {business}
+                                </div>
+                                <div className='fit-content border border-[#E6E6E6] rounded-sm p-1'>
+                                    <Link href="product-details">
+                                        Explore <span className='text-[#018C01]'>Deal</span>
+                                    </Link>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>

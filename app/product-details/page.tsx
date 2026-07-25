@@ -1,7 +1,7 @@
 export default function ProductDetails() {
     return (
         <div>
-            So this is the details
+            This is under construction
         </div>
     )
 }
