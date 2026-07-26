@@ -22,7 +22,7 @@ interface IBusiness {
 
 // IProduct is an representation of the product
 interface IProduct {
-    ID: number
+    id: number
     name: string
     price: number
     description: string
@@ -51,12 +51,11 @@ export default function Welcome() {
     useEffect(() => {
         getProducts()
             .then(data => {
-                if (data.data && data.data != undefined) {
+                if (data && data?.data != undefined) {
                     const productResponse: IProduct[] = data.data
-                    console.log(productResponse)
                     setProducts(productResponse)
                     setLoading(false)
-                }else if (data.data == undefined){
+                }else if (data?.data == undefined){
                     setLoading(false)
                 }   
 
@@ -86,9 +85,9 @@ export default function Welcome() {
                 <div className="flex flex-col sm:flex-wrap sm:flex-row lg:flex-wrap lg:flex-row">
                     {loading && <p className="text-center text-green-500 font-thin text-lg">Loading ....</p>}
                     {loadingError && <p className="text-center text-red-500 font-thin text-lg">Error loading data, the technical team has been notified</p>}
-                    {(products.length === 0 && !loadingError && !loading) && <p className="text-center text-gray-500 font-thin text-lg p-2">Thansk for visiting Smart Deals, We are coming very soon !!!</p>}
+                    {(products.length === 0 && !loadingError && !loading) && <p className="text-center text-gray-500 font-thin text-lg p-2">Thanks for visiting Smart Deals, We are coming very soon !!!</p>}
                     {
-                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} category={d.category.name} price={d.price} name={d.name} discount={d.discount} business={d.business.name} discounted_price={d.discounted_price} imageurl={`http://localhost:8090/${d.logo}`} />)
+                        products != undefined && products.map((d) => <AvailableProductComponent key={d.logo} id={d.id} category={d.category.name} price={d.price} name={d.name} discount={d.discount} business={d.business.name} discounted_price={d.discounted_price} imageurl={`http://localhost:8090/${d.logo}`} />)
                     }
                 </div>
             </div>

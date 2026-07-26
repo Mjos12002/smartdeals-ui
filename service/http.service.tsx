@@ -183,5 +183,15 @@ const httpService = {
 			throw(error)
 		}
 	},
+	getProductByID: async function(url: string) {
+		try{
+			const response = await fetch(url, {
+				method: "GET"
+			})
+			return await response.json()
+		}catch(error) {
+			throw(error)
+		}
+	},
 };
 export { httpService };

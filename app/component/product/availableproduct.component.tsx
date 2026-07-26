@@ -10,6 +10,7 @@ export function AvailableProductComponent({
     imageurl,
     business,
     category,
+    id,
 }: {
     name: string;
     price: number,
@@ -17,8 +18,10 @@ export function AvailableProductComponent({
     discounted_price: number,
     imageurl: string,
     business: string,
-    category: string
+    category: string,
+    id: number
 }) {
+    const moreInfo = `product-details/${id}`
     return (
         <div className="flex flex-col sm:w-[50%] lg:w-[25%] md:w-[50%] p-1">
             <div className="w-full h-[400] border border-[#fff] relative shadow-md">
@@ -51,7 +54,7 @@ export function AvailableProductComponent({
                                     {business}
                                 </div>
                                 <div className='fit-content border border-[#E6E6E6] rounded-sm p-1'>
-                                    <Link href="product-details">
+                                    <Link href={moreInfo}>
                                         Explore <span className='text-[#018C01]'>Deal</span>
                                     </Link>
                                 </div>

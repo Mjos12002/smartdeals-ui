@@ -60,13 +60,21 @@ export async function createProduct(prev: FormState, formData: FormData): Promis
 
 }
 
-export async function getProducts(){
+// getProducts is used to load the products
+export async function getProducts() {
 
     const cookie = await cookies()
     const token: string | undefined = cookie.get("token")?.value
+    const devURL = getEnv("dev").value
     if (token != undefined) {
-        const devURL = getEnv("dev").value
         return httpService.getProduct(`${devURL}secure/v1/product`, token)
+    } else {
+        return httpService.getProduct(`${devURL}secure/v1/product`, "")
     }
 
+}
+
+export async function getProductByID(id: number) {
+    const devURL = getEnv("dev").value
+    return httpService.getProductByID(`${devURL}secure/v1/product/${id}`)
 }
