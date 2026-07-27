@@ -104,7 +104,12 @@ export default function ProductDetailsByIdentifier(
     }, [])
     return (
         <div className="flex flex-col p-2">
-            <div className="w-full h-[400] bg-red-500 relative">
+            <div className="w-full h-[400] relative shadow-sm">
+                <div className="absolute top-0 left-0 z-100 fit-content bg-[]">
+                    <div className='p-1 fit-content bg-[#F05B05] text-[#fff]'>
+                        {products?.discount} Off
+                    </div>
+                </div>
                 <Image
                     src={`http://localhost:8090/${logoImages}`}
                     alt="image"
@@ -113,7 +118,7 @@ export default function ProductDetailsByIdentifier(
             <div className="flex items-center justify-center height-[50] relative p-2">
                 <ul className="flex gap-1">
                     <li>
-                        <div className="w-[50] h-[50] relative">
+                        <div className="w-[50] h-[50] relative border border-[#E3E4E6]">
                             {products?.logo && products?.logo.split(",").length >= 3 && <Image
                                 src={`http://localhost:8090/${products?.logo.split(",")[1].trim()}`}
                                 alt="image"
@@ -124,7 +129,7 @@ export default function ProductDetailsByIdentifier(
                         </div>
                     </li>
                     <li>
-                        <div className="w-[50] h-[50] relative">
+                        <div className="w-[50] h-[50] relative border border-[#E3E4E6]">
                             {products?.logo && products?.logo.split(",").length >= 3 && <Image
                                 src={`http://localhost:8090/${products?.logo.split(",")[2].trim()}`}
                                 alt="image"
@@ -134,7 +139,7 @@ export default function ProductDetailsByIdentifier(
                         </div>
                     </li>
                     <li>
-                        <div className="w-[50] h-[50] relative">
+                        <div className="w-[50] h-[50] relative border border-[#E3E4E6]">
                             {products?.logo && products?.logo.split(",").length >= 3 && <Image
                                 src={`http://localhost:8090/${products?.logo.split(",")[3].trim()}`}
                                 alt="image"
@@ -148,15 +153,17 @@ export default function ProductDetailsByIdentifier(
             <div>
                 <ul className="flex flex-col gap-3">
                     <li>
-                        <p className="text-3xl font-bold">{products?.name}</p>
-                        <p className="text-[#6A6868] text-xl">{products?.category.name}</p>
+                        <p className="text-3xl font-bold text-[#00051F]">{products?.name}</p>
+                        <p className="text-[#7C7D7C] text-xl font-thin">{products?.category.name}</p>
                     </li>
                     <li >
-
+                        <div className="flex justify-end p-1">
+                            Price  <div className="text-red-400">{products?.price}</div> - <div>{products && products?.price - products?.discounted_price}</div>
+                        </div>
                     </li>
                     <li>
 
-                        <div className="bg-[#fff] border border-[#D6D4D4] rounded-md shadow-sm p-2">
+                        <div className="bg-[#fff] border border-[#D6D4D4] rounded-md shadow-sm p-1">
                             <p className="text-lg font-bold">
                                 Product Description
                             </p>
