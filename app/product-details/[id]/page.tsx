@@ -9,9 +9,9 @@ interface IBusiness {
     description: string
     logoURL: string
     street: string
-    popularName: string
+    popular_name: string
     email: string
-    phoneNumber: string
+    phone_number: string
     twitter: string
     facebook: string
     instagram: string
@@ -93,6 +93,7 @@ export default function ProductDetailsByIdentifier(
                     setProducts(productResponse[0])
                     setLogoImages(productResponse[0]?.logo?.split(",")[0]?.trim() ?? "")
                     setLoading(false)
+                    console.log(data.data)
                 } else if (data?.data == undefined) {
                     setLoading(false)
                 }
@@ -158,7 +159,16 @@ export default function ProductDetailsByIdentifier(
                     </li>
                     <li >
                         <div className="flex justify-end p-1">
-                            Price  <div className="text-red-400">{products?.price}</div> - <div>{products && products?.price - products?.discounted_price}</div>
+                            <div className="flex fit-content">
+                                <div className='flex gap-1 size-fit border border-[#F2A072] rounded-sm'>
+                                    <div className='line-through text-lg text-[#fff] bg-[#F05B05] size-fit p-1'>
+                                        Price: {products?.price}
+                                    </div>
+                                    <div className='text-lg text-[#02B00D] size-fit flex p-1 font-bold shadow-sm'>
+                                        {products && products?.price - products?.discounted_price} Frw
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </li>
                     <li>
@@ -170,6 +180,25 @@ export default function ProductDetailsByIdentifier(
                             {products?.description}
                         </div>
 
+                    </li>
+                    <li>
+                        <div className="bg-[#fff] border border-[#D6D4D4] rounded-md shadow-sm p-1">
+                            <p className="text-lg font-bold">
+                                Sold by
+                            </p>
+                            <p>
+                                {products?.business.name}
+                            </p>
+                            <p>
+                                {products?.business.popular_name}
+                            </p>
+                            <p>
+                                {products?.business.phone_number}
+                            </p>
+                            <p>
+                                {products?.business.email}
+                            </p>
+                        </div>
                     </li>
                 </ul>
             </div>
