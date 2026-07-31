@@ -3,6 +3,7 @@
 import { getProducts } from "@/action/product.action"
 import { useEffect, useState } from "react"
 import { AvailableProductComponent } from "./component/product/availableproduct.component"
+import ProductCategoryComponent from "./component/product/product-category.component"
 
 // Ibusiness is an representation of the business
 interface IBusiness {
@@ -69,8 +70,9 @@ export default function Welcome() {
     return (
         <div className="h-screen overflow-y-scroll bg-gradient-to-r sm:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
+            <ProductCategoryComponent/>
+            
             <div className="flex justify-center">
-
                 <div className="border border-[#C7C9C9] rounded-lg flex w-[100%] m-3 justify-between bg-[#fff] lg:w-[50%]">
                     <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" />
                     <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]">

@@ -170,13 +170,10 @@ const httpService = {
 			throw(error)
 		}
 	},
-	getProductCategory: async function(url: string, token: string) {
+	getProductCategory: async function(url: string) {
 		try{
 			const response = await fetch(url, {
-				method: "GET",
-				headers: {
-					"Authorization": `Bearer ${token}`
-				}
+				method: "GET"
 			})
 			return await response.json()
 		}catch(error) {

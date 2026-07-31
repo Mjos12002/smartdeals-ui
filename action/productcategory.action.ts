@@ -22,9 +22,6 @@ export type FormState = {
 export async function getProductCategory(): Promise<any> {
     const cookie = await cookies()
     const token: string | undefined = cookie.get("token")?.value
-    if(token != undefined) {
-        const devURL = getEnv("dev").value
-        console.log(devURL)
-        return httpService.getProductCategory(`${devURL}secure/v1/product-category`, token)
-    }
+    const devURL = getEnv("dev").value
+    return httpService.getProductCategory(`${devURL}secure/v1/product-category`)
 }

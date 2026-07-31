@@ -2,6 +2,8 @@
 import { useEffect, useState, use } from "react"
 import { getProductByID } from "@/action/product.action"
 import Image from "next/image"
+import { MapIcon, PencilIcon, PhoneIcon } from "@heroicons/react/20/solid"
+import { ArchiveBoxIcon } from "@heroicons/react/16/solid"
 
 // Ibusiness is an representation of the business
 interface IBusiness {
@@ -108,7 +110,7 @@ export default function ProductDetailsByIdentifier(
             <div className="w-full h-[400] relative shadow-sm">
                 <div className="absolute top-0 left-0 z-100 fit-content bg-[]">
                     <div className='p-1 fit-content bg-[#F05B05] text-[#fff]'>
-                        {products?.discount} Off
+                        {products?.discount}% Off
                     </div>
                 </div>
                 <Image
@@ -158,10 +160,10 @@ export default function ProductDetailsByIdentifier(
                         <p className="text-[#7C7D7C] text-xl font-thin">{products?.category.name}</p>
                     </li>
                     <li >
-                        <div className="flex justify-end p-1">
+                        <div className="flex justify-end p-0">
                             <div className="flex fit-content">
-                                <div className='flex gap-1 size-fit border border-[#F2A072] rounded-sm'>
-                                    <div className='line-through text-lg text-[#fff] bg-[#F05B05] size-fit p-1'>
+                                <div className='flex gap-1 size-fit border border-[#AEAEB0] rounded-sm'>
+                                    <div className='line-through text-lg text-[#fff] bg-[#000021] size-fit p-1'>
                                         Price: {products?.price}
                                     </div>
                                     <div className='text-lg text-[#02B00D] size-fit flex p-1 font-bold shadow-sm'>
@@ -173,33 +175,50 @@ export default function ProductDetailsByIdentifier(
                     </li>
                     <li>
 
-                        <div className="bg-[#fff] border border-[#D6D4D4] rounded-md shadow-sm p-1">
-                            <p className="text-lg font-bold">
+                        <div className="bg-[#fff] border border-[#BDBFBF] rounded-md shadow-sm p-1">
+                            <p className="text-xl font-bold text-[#000]">
                                 Product Description
                             </p>
-                            {products?.description}
+                            <div className="text-[#01000A] font-light">
+                                {products?.description}
+                            </div>
+
+                            <div className="mt-4">
+                                <p className="text-xl font-bold text-[#000]">
+                                    Sold by
+                                </p>
+                                <div className="flex gap-2 flex-wrap">
+                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
+                                        <div className="pr-1 flex items-center">
+                                            <PencilIcon height={15} width={15} /> Name
+                                        </div>
+                                        <div>{products?.business.name}</div>
+                                    </div>
+                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
+                                        <div className="pr-1 flex items-center">
+                                            <MapIcon height={15} width={15} /> Popular name
+                                        </div>
+                                        <div>{products?.business.popular_name}</div>
+                                    </div>
+                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
+                                        <div className="pr-1 flex items-center">
+                                            <PhoneIcon height={15} width={15} /> Phone number
+                                        </div>
+                                        <div>{products?.business.phone_number}</div>
+                                    </div>
+                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
+                                        <div className="pr-1 flex items-center">
+                                            <ArchiveBoxIcon height={15} width={15} /> Email
+                                        </div>
+                                        <div>{products?.business.email}</div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
 
                     </li>
-                    <li>
-                        <div className="bg-[#fff] border border-[#D6D4D4] rounded-md shadow-sm p-1">
-                            <p className="text-lg font-bold">
-                                Sold by
-                            </p>
-                            <p>
-                                {products?.business.name}
-                            </p>
-                            <p>
-                                {products?.business.popular_name}
-                            </p>
-                            <p>
-                                {products?.business.phone_number}
-                            </p>
-                            <p>
-                                {products?.business.email}
-                            </p>
-                        </div>
-                    </li>
+
                 </ul>
             </div>
         </div>

@@ -30,7 +30,7 @@ export function AvailableProductComponent({
                     alt={name}
                     fill />
                 <div className='absolute top-0 left-0'>
-                    <div className='p-1 fit-content bg-[#F05B05] text-[#fff]'>{discount}% Off</div>
+                    <div className='p-1 fit-content bg-[#E06002] text-[#fff]'>{discount}% Off</div>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full bg-[#fff] p-2">
                     <ul className='flex gap-2 flex-col'>
@@ -39,8 +39,8 @@ export function AvailableProductComponent({
                             <div className='text-[#403F3F]'>{category}</div>
                         </li>
                         <li>
-                            <div className='flex gap-1 size-fit border border-[#F2A072] rounded-sm'>
-                                <div className='line-through text-lg text-[#fff] bg-[#F05B05] size-fit p-1'>
+                            <div className='flex gap-1 size-fit border border-[#AEAEB0] rounded-sm'>
+                                <div className='line-through text-lg text-[#fff] bg-[#000021] size-fit p-1'>
                                     Price: {price}
                                 </div>
                                 <div className='text-lg text-[#02B00D] size-fit flex p-1 font-bold'>
@@ -50,7 +50,7 @@ export function AvailableProductComponent({
                         </li>
                         <li>
                             <div className='flex justify-between'>
-                                <div className='fit-content'>
+                                <div className='fit-content flex items-center'>
                                     {business}
                                 </div>
                                 <div className='fit-content border border-[#E6E6E6] rounded-sm p-1'>
