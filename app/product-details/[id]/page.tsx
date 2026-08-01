@@ -188,29 +188,29 @@ export default function ProductDetailsByIdentifier(
                                     Sold by
                                 </p>
                                 <div className="flex gap-2 flex-wrap">
-                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
-                                        <div className="pr-1 flex items-center">
-                                            <PencilIcon height={15} width={15} /> Name
+                                    <div className="text-[#01000A] flex flex-col w-[40%]">
+                                        <div className="pr-1 flex items-center text-lg font-bold">
+                                            <PencilIcon height={17} width={17} className="text-[#FF8C00] mr-2"/> Name
                                         </div>
-                                        <div>{products?.business.name}</div>
+                                        <div className="text-[#4D4B4B]">{products?.business.name}</div>
                                     </div>
-                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
-                                        <div className="pr-1 flex items-center">
-                                            <MapIcon height={15} width={15} /> Popular name
+                                    <div className="text-[#01000A] flex flex-col w-[40%]">
+                                        <div className="pr-1 flex items-center text-lg font-bold">
+                                            <MapIcon height={17} width={17} className="text-[#FF8C00] mr-2"/> Popular name
                                         </div>
-                                        <div>{products?.business.popular_name}</div>
+                                        <div className="text-[#4D4B4B]">{products?.business.popular_name}</div>
                                     </div>
-                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
-                                        <div className="pr-1 flex items-center">
-                                            <PhoneIcon height={15} width={15} /> Phone number
+                                    <div className="text-[#01000A] flex flex-col w-[40%]">
+                                        <div className="pr-1 flex items-center text-lg font-bold">
+                                            <PhoneIcon height={17} width={17} className="text-[#FF8C00] mr-2"/> Phone number
                                         </div>
-                                        <div>{products?.business.phone_number}</div>
+                                        <div className="text-[#4D4B4B]">{products?.business.phone_number}</div>
                                     </div>
-                                    <div className="text-[#01000A] flex flex-col w-[40%] border border-[#EBEBEB]">
-                                        <div className="pr-1 flex items-center">
-                                            <ArchiveBoxIcon height={15} width={15} /> Email
+                                    <div className="text-[#01000A] flex flex-col w-[40%]">
+                                        <div className="pr-1 flex items-center text-lg font-bold">
+                                            <ArchiveBoxIcon height={17} width={17} className="text-[#FF8C00] mr-2"/> Email
                                         </div>
-                                        <div>{products?.business.email}</div>
+                                        <div className="text-[#4D4B4B]">{products?.business.email}</div>
                                     </div>
                                 </div>
 
