@@ -36,14 +36,14 @@ export default function ProductCategoryComponent({ onCustomEvent }: ChildProps) 
     }, [])
 
     return (
-        <div className="flex items-center justify-center bg-[#000029] bg-gradient-to-r sm:from-[#000029] via-[#D3E6E0] to-[#00A324]">
+        <div className="flex items-center justify-center bg-[#7AAD02] sm:from-[#010101] sm:via-[#D3E6E0] sm:to-[#010101] ">
             <ul className="flex gap-2 m-2 overflow-x-scroll">
-                <li className="font-bold text-[#000] flex items-center p-1 cursor-pointer" onClick={() => sendDataToParent("All")}>
+                <li className="font-bold text-[#fff] flex items-center p-1 cursor-pointer" onClick={() => sendDataToParent("All")}>
                     All
                 </li>
                 {
                     productCategories.map((category, index) => (
-                        <li key={index} className="flex items-center text-[#000] p-1 hover:bg-[#001204] hover:text-[#fff] p-1 cursor-pointer" onClick={() => sendDataToParent(category.name)}>
+                        <li key={index} className="flex items-center text-[#fff] p-1 hover:bg-[#fff] hover:text-[#517301] p-1 cursor-pointer" onClick={() => sendDataToParent(category.name)}>
                             {category.name}
                         </li>
                     ))
