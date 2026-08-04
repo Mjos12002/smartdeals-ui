@@ -23,8 +23,8 @@ export default async function Header() {
                 </div>
             </div>
             <div className="hidden sm:flex justify-center items-center">
-                <ul className="flex gap-4 bg-[#E1E1E3] text-black rounded-lg opacity-80 border border-[#fff] m-0 p-0">
-                    <li className="p-2 bg-[#000] border rounded-lg text-white"><Link href="/">Home</Link></li>
+                <ul className="flex gap-4 bg-[#E1E1E3] text-black opacity-80 border border-[#fff] m-0 p-0">
+                    <li className="p-2 bg-[#000] text-white"><Link href="/">Home</Link></li>
                     <li className="p-2 flex items-center"><Link href="/about">About Us</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signin">Sign In</Link></li>
                     <li className="p-2 flex items-center"><Link href="/signup">Sign Up</Link></li>

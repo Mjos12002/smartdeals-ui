@@ -35,8 +35,8 @@ export function AvailableProductComponent({
                 <div className="absolute bottom-0 left-0 w-full bg-[#fff] p-2">
                     <ul className='flex gap-2 flex-col'>
                         <li>
-                            <div className="font-bold text-lg text-[#00001F]">{name}</div>
-                            <div className='text-[#403F3F]'>{category}</div>
+                            <div className="font-bold text-lg text-[#515252]">{name}</div>
+                            <div className='text-[#000]'>{category}</div>
                         </li>
                         <li>
                             <div className='flex gap-1 size-fit border border-[#AEAEB0] rounded-sm'>
