@@ -8,17 +8,17 @@ import ProductCategoryComponent from "./component/product/product-category.compo
 // Ibusiness is an representation of the business
 interface IBusiness {
     name: string
-	description: string
-	logoURL: string
-	street: string
-	popularName: string
-	email: string
-	phoneNumber: string
-	twitter: string
-	facebook: string
-	instagram: string
-	province: string
-	district: string
+    description: string
+    logoURL: string
+    street: string
+    popularName: string
+    email: string
+    phoneNumber: string
+    twitter: string
+    facebook: string
+    instagram: string
+    province: string
+    district: string
 }
 
 // IProduct is an representation of the product
@@ -47,6 +47,7 @@ export default function Welcome() {
     var [products, setProducts] = useState<IProduct[]>([])
     var [loading, setLoading] = useState<boolean>(true)
     var [loadingError, setLoadingError] = useState<boolean>(false)
+    var [productCategory, setProductCategory] = useState<string>("All")
 
     // Fetching the products from the backend using the useEffect hook
     useEffect(() => {
@@ -56,9 +57,9 @@ export default function Welcome() {
                     const productResponse: IProduct[] = data.data
                     setProducts(productResponse)
                     setLoading(false)
-                }else if (data?.data == undefined){
+                } else if (data?.data == undefined) {
                     setLoading(false)
-                }   
+                }
 
             })
             .catch(err => {
@@ -67,11 +68,48 @@ export default function Welcome() {
             })
     }, [])
 
+    const handleChildEvent = (category: string) => {
+
+        if (category === "All") {
+            getProducts()
+                .then(data => {
+                    if (data && data?.data != undefined) {
+                        const productResponse: IProduct[] = data.data
+                        setProducts(productResponse)
+                    } else if (data?.data == undefined) {
+                        setProducts([])
+                    }
+                })
+                .catch(err => {
+                    setLoadingError(true)
+                })
+        } else {
+            console.log("Selected category: ", category)
+            console.log("Products in category: ", products)
+
+            getProducts()
+                .then(data => {
+                    if (data && data?.data != undefined) {
+                        
+                        const productResponse: IProduct[] = data.data
+                        const filteredProducts = productResponse.filter(product => product.category.name === category.trim())
+
+                        setProducts(filteredProducts)
+                    } else if (data?.data == undefined) {
+                        setProducts([])
+                    }
+                })
+                .catch(err => {
+                    setLoadingError(true)
+                })
+
+        }
+    }
+
     return (
         <div className="h-screen overflow-y-scroll bg-gradient-to-r sm:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
-            <ProductCategoryComponent/>
-            
+            <ProductCategoryComponent onCustomEvent={handleChildEvent} />
             <div className="flex justify-center">
                 <div className="border border-[#C7C9C9] rounded-lg flex w-[100%] m-3 justify-between bg-[#fff] lg:w-[50%]">
                     <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" />
