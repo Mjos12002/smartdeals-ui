@@ -38,7 +38,7 @@ export function AvailableProductComponent({
                             <div className="font-bold text-lg text-[#515252]">{name}</div>
                             <div className='text-[#000]'>{category}</div>
                         </li>
-                        <li>
+                        <li className='mt-8'>
                             <div className='flex gap-1 size-fit border border-[#AEAEB0] rounded-sm'>
                                 <div className='line-through text-lg text-[#fff] bg-[#000021] size-fit p-1'>
                                     Price: {price}
@@ -53,9 +53,9 @@ export function AvailableProductComponent({
                                 <div className='fit-content flex items-center'>
                                     {business}
                                 </div>
-                                <div className='fit-content border border-[#E6E6E6] rounded-sm p-1'>
+                                <div className='fit-content border border-[#FFBB00] bg-[#FFBB00] text-[#fff] rounded-sm p-1'>
                                     <Link href={moreInfo}>
-                                        Explore <span className='text-[#018C01]'>Deal</span>
+                                        Explore <span className='text-[#fff]'>Deal</span>
                                     </Link>
                                 </div>
                             </div>

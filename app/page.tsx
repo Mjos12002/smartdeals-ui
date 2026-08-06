@@ -90,7 +90,7 @@ export default function Welcome() {
             getProducts()
                 .then(data => {
                     if (data && data?.data != undefined) {
-                        
+
                         const productResponse: IProduct[] = data.data
                         const filteredProducts = productResponse.filter(product => product.category.name === category.trim())
 
@@ -106,14 +106,85 @@ export default function Welcome() {
         }
     }
 
+    // Handle the enter key event in the search input field to filter products based on the search value
+    const handleEnterEvent = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        console.log(event.key)
+        if (event.key === 'Enter') {
+            const searchValue = (event.target as HTMLInputElement).value.toLowerCase()
+            getProducts()
+                .then(data => {
+                    if (data && data?.data != undefined) {
+                        const productResponse: IProduct[] = data.data
+                        const filteredProducts = productResponse.filter(product => product.name.toLowerCase().includes(searchValue))
+                        setProducts(filteredProducts)
+                    } else if (data?.data == undefined) {
+                        setProducts([])
+                    }
+                })
+                .catch(err => {
+                    setLoadingError(true)
+                })
+        } else {
+            const searchValue = (event.target as HTMLInputElement).value.toLowerCase()
+            if (searchValue === "") {
+                getProducts()
+                    .then(data => {
+                        if (data && data?.data != undefined) {
+                            const productResponse: IProduct[] = data.data
+                            setProducts(productResponse)
+                        } else if (data?.data == undefined) {
+                            setProducts([])
+                        }
+                    })
+                    .catch(err => {
+                        setLoadingError(true)
+                    })
+            } else {
+                getProducts()
+                    .then(data => {
+                        if (data && data?.data != undefined) {
+                            const productResponse: IProduct[] = data.data
+                            setProducts(productResponse)
+                        } else if (data?.data == undefined) {
+                            setProducts([])
+                        }
+                    })
+                    .catch(err => {
+                        setLoadingError(true)
+                    })
+            }
+        }
+    }
+
+    // Handle the click event on the search button to filter products based on the search value
+    const handleClickEventForSearch = () => {
+        const searchInput = document.querySelector('input[id="search"]') as HTMLInputElement
+        const searchValue = searchInput.value.toLowerCase()
+        getProducts()
+            .then(data => {
+                if (data && data?.data != undefined) {
+                    const productResponse: IProduct[] = data.data
+                    const filteredProducts = productResponse.filter(product => product.name.toLowerCase().includes(searchValue))
+                    setProducts(filteredProducts)
+                } else if (data?.data == undefined) {
+                    setProducts([])
+                }
+            })
+            .catch(err => {
+                setLoadingError(true)
+            })
+
+
+    }
+
     return (
         <div className="h-screen overflow-y-scroll bg-gradient-to-r sm:from-[#fff] via-[#D3E6E0] to-[#E6E8F0]">
 
             <ProductCategoryComponent onCustomEvent={handleChildEvent} />
             <div className="flex justify-center">
                 <div className="border border-[#C7C9C9] rounded-lg flex w-[100%] m-3 justify-between bg-[#fff] lg:w-[50%]">
-                    <input placeholder="Search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" />
-                    <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]">
+                    <input placeholder="Search" id="search" className="p-1 m-2 sm:w-[100%] md:w-[100%] w-[100%] bg-[#fff]" onKeyUp={handleEnterEvent} />
+                    <div className="search-button p-2 flex items-center bg-[#010C63] rounded-r-lg border border-[#fff]" onClick={handleClickEventForSearch}>
                         <svg className="w-6 h-6 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" strokeLinecap="round" strokeWidth="3" d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
                         </svg>
